@@ -1,0 +1,321 @@
+/* === Global Styles === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #f5f7fa;
+  color: #2d2d2d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === App Container === */
+.app-container {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 100vh;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+.app-container.dark {
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+}
+
+.app-container.light {
+  background-color: #ffffff;
+  color: #2d2d2d;
+}
+
+/* === Top Bar === */
+.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 16px;
+  right: 20px;
+}
+
+/* === Title === */
+.title {
+  font-size: 2.75rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+/* === Filters === */
+.filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.filter-select {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fdfdfd;
+  transition: border-color 0.2s;
+}
+
+.filter-select:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* === Input Section === */
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+  width: 100%;
+  max-width: 650px;
+  justify-content: center;
+}
+
+.task-input,
+.priority-select,
+.due-date-input {
+  padding: 0.9rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 200px;
+  background-color: #fcfcfc;
+}
+
+.task-input:focus,
+.priority-select:focus,
+.due-date-input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* === Add Button === */
+.add-btn {
+  padding: 0.9rem 1.8rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.add-btn:hover {
+  background-color: #2471a3;
+}
+
+/* === Task List === */
+.task-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 850px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.app-container.dark .task-item {
+  background-color: #2f3b52;
+}
+
+.task-text.done {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* === Priority Tag === */
+.priority-tag {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.priority-tag.low {
+  background-color: #2ecc71;
+}
+
+.priority-tag.medium {
+  background-color: #f39c12;
+}
+
+.priority-tag.high {
+  background-color: #e74c3c;
+}
+
+/* === Buttons === */
+.task-btn,
+.google-calendar {
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.task-btn:hover,
+.google-calendar:hover {
+  background-color: #2471a3;
+}
+
+.delete {
+  background-color: #e74c3c;
+}
+
+.delete:hover {
+  background-color: #c0392b;
+}
+
+/* === Toggle Switch === */
+.switch {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  display: inline-block;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+input:checked + .slider {
+  background-color: #3498db;
+}
+
+input:checked + .slider::before {
+  transform: translateX(30px);
+}
+
+.slider .icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  z-index: 2;
+  transition: 0.4s;
+}
+
+.slider .icon.sun {
+  left: 8px; /* Position the sun icon to the left */
+  color: #f0f0f0; /* Light color for the sun icon in dark mode */
+}
+
+.slider .icon.moon {
+  right: 8px; /* Position the moon icon to the right */
+  color: #2d2d2d; /* Dark color for the moon icon in light mode */
+}
+
+input:checked + .slider .icon.sun {
+  color: #2d2d2d; /* Dark color for the sun icon when dark mode is active */
+}
+
+input:checked + .slider .icon.moon {
+  color: #f0f0f0; /* Light color for the moon icon when dark mode is active */
+}
+
+/* === Error Message === */
+.error-message {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 850px;
+  text-align: center;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .input-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .task-input,
+  .priority-select,
+  .due-date-input {
+    max-width: 100%;
+  }
+
+  .top-bar {
+    top: 10px;
+    right: 0;
+    justify-content: center;
+  }
+
+  .task-btn,
+  .google-calendar {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
